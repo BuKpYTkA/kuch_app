@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\TestController;
+use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,10 +21,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['auth:api'])->group(function () {
-    Route::get('/test', [TestController::class, 'index']);
-    Route::post('/products/create', [ProductsController::class, 'create']);
-    Route::post('/products/update/{product}', [ProductsController::class, 'update']);
-    Route::get('/products/all', [ProductsController::class, 'getAll']);
+Route::middleware(['auth:api'])->group(static function () {
+    Route::prefix('products')->group(static function () {
+        Route::post('/create', [ProductsController::class, 'create']);
+        Route::post('/update/{product}', [ProductsController::class, 'update']);
+        Route::get('/all', [ProductsController::class, 'getAll']);
+    });
+    Route::prefix('categories')->group(static function () {
+        Route::post('/create', [CategoriesController::class, 'create']);
+        Route::post('/update/{category}', [CategoriesController::class, 'update']);
+        Route::get('/all', [CategoriesController::class, 'getAll']);
+    });
+    Route::prefix('shopping_cart')->group(static function () {
+        Route::post('/add', [ShoppingCartController::class, 'addItem']);
+        Route::post('/remove', [ShoppingCartController::class, 'removeItem']);
+        Route::post('/clear', [ShoppingCartController::class, 'clear']);
+        Route::get('/get', [ShoppingCartController::class, 'getItems']);
+    });
 });
 

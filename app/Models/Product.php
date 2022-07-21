@@ -18,6 +18,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
  * @property string $title
  * @property string $description
  * @property int|null $category_id
+ * @property int $price
  *
  * @property Category|null $category
  */
@@ -38,7 +39,8 @@ class Product extends Model implements HasMedia
     protected $fillable = [
         'title',
         'description',
-        'category_id'
+        'category_id',
+        'price'
     ];
 
     protected $hidden = [
@@ -58,6 +60,7 @@ class Product extends Model implements HasMedia
      */
     public function addMainImage(UploadedFile $file): void
     {
+        $this->getMainImage()?->delete();
         $this->addMedia($file)->toMediaCollection(self::MAIN_IMAGE_MEDIA_COLLECTION);
     }
 

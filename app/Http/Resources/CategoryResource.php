@@ -2,17 +2,17 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use JsonSerializable;
 
-class ProductResource extends JsonResource
+class CategoryResource extends JsonResource
 {
 
     /**
-     * @var Product
+     * @var Category
      */
     public $resource;
 
@@ -24,10 +24,6 @@ class ProductResource extends JsonResource
      */
     public function toArray($request)
     {
-        $data = parent::toArray($request);
-        $data['image_url'] = $this->resource->getMainImage()?->getOriginalUrlAttribute();
-        $data['category'] =  new CategoryResource($this->whenLoaded('category'));
-
-        return $data;
+        return parent::toArray($request);
     }
 }

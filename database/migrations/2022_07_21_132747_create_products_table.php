@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->bigInteger('price');
             $table->timestamps();
 
             $table->foreign('category_id')

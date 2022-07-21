@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\UploadedFile;
 
-class CreateUpdateProductRequest extends FormRequest
+class CreateProductRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,13 @@ class CreateUpdateProductRequest extends FormRequest
      *
      * @return array<string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'title' => 'required|min:1|max:255',
-            'description' => 'nullable|max:1000',
-            'category_id' => 'nullable|exists:categories,id',
+            'title' => 'required|min:1|string|max:255',
+            'description' => 'nullable|string|max:1000',
+            'category_id' => 'nullable|int|exists:categories,id',
+            'price' => 'required|int',
             'image' => 'nullable|max:' . config('media-library.max_file_size') / 1024
         ];
     }
@@ -40,7 +41,8 @@ class CreateUpdateProductRequest extends FormRequest
         return $this->only([
             'title',
             'description',
-            'category_id'
+            'category_id',
+            'price'
         ]);
     }
 

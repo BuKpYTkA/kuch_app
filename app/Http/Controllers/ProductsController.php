@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUpdateProductRequest;
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 class ProductsController extends Controller
 {
 
-    public function create(CreateUpdateProductRequest $request): ProductResource
+    public function create(CreateProductRequest $request): ProductResource
     {
         /** @var Product $product */
         $product = Product::query()->create($request->getInsertData());
@@ -26,13 +27,15 @@ class ProductsController extends Controller
         return new ProductResource($product);
     }
 
-    public function update(CreateUpdateProductRequest $request, Product $product): ProductResource
+    public function update(UpdateProductRequest $request, Product $product): ProductResource
     {
         $product->update($request->getInsertData());
 
+        if ($request->shouldDeleteImage()) {
+            $product->getMainImage()?->delete();
+        }
         $image = $request->getImage();
         if ($image) {
-            $product->getMainImage()?->delete();
             $product->addMainImage($image);
         }
         $product->load([
