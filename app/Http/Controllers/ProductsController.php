@@ -46,7 +46,7 @@ class ProductsController extends Controller
     public function getAll(): AnonymousResourceCollection
     {
         return ProductResource::collection(Product::query()
-            ->with('media')
+            ->with('media', 'category')
             ->paginate());
     }
 }
