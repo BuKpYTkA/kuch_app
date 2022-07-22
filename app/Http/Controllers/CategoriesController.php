@@ -38,6 +38,9 @@ class CategoriesController extends Controller
 
     public function getAll(): AnonymousResourceCollection
     {
-        return CategoryResource::collection(Category::query()->paginate());
+        return CategoryResource::collection(Category::query()
+            ->orderBy('title', 'ASC')
+            ->paginate()
+        );
     }
 }
