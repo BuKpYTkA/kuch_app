@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property int $user_id
  *
  * @property User $user
- * @property Collection<ShoppingCartItem> $items
+ * @property Collection<ShoppingCartItem>|ShoppingCartItem[] $items
  */
 class ShoppingCart extends Model
 {

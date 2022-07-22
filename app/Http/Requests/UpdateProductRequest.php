@@ -12,7 +12,7 @@ class UpdateProductRequest extends CreateProductRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return array_merge(parent::rules(), [
             'delete_image' => 'nullable|boolean'

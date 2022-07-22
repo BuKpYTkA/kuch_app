@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\GetProductsRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
@@ -46,9 +48,28 @@ class ProductsController extends Controller
         return new ProductResource($product);
     }
 
-    public function getAll(): AnonymousResourceCollection
+    public function delete(Product $product): JsonResponse
     {
-        return ProductResource::collection(Product::query()
+        $product->delete();
+
+        return response()->json();
+    }
+
+    public function getAll(GetProductsRequest $request): AnonymousResourceCollection
+    {
+        $query = Product::query();
+
+        if ($request->hasOrderBy()) {
+            $query->orderBy($request->getOrderBy()->value, $request->getOrderDirection()->value);
+        }
+        if ($request->hasPriceMin()) {
+            $query->where('price', '>=', $request->getPriceMin());
+        }
+        if ($request->hasPriceMax()) {
+            $query->where('price', '<=', $request->getPriceMax());
+        }
+
+        return ProductResource::collection($query
             ->with('media', 'category')
             ->paginate());
     }

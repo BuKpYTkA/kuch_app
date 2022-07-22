@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUpdateCategoryRequest;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CategoriesController extends Controller
@@ -26,6 +27,13 @@ class CategoriesController extends Controller
         ]);
 
         return new CategoryResource($category);
+    }
+
+    public function delete(Category $category): JsonResponse
+    {
+        $category->delete();
+
+        return response()->json();
     }
 
     public function getAll(): AnonymousResourceCollection

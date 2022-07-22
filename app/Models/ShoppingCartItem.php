@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
+ * @property int $quantity
+ *
  * @property ShoppingCart $shoppingCart
  * @property Product $product
  */

@@ -26,7 +26,8 @@ class ShoppingCartController extends Controller
         ]);
         $shoppingCart->load([
             'items',
-            'items.product.category'
+            'items.product.category',
+            'items.product.media',
         ]);
 
         return ShoppingCartItemResource::collection($shoppingCart->items);
@@ -48,7 +49,8 @@ class ShoppingCartController extends Controller
         } else {
             $shoppingCart->load([
                 'items',
-                'items.product.category'
+                'items.product.category',
+                'items.product.media',
             ]);
         }
 
@@ -75,7 +77,8 @@ class ShoppingCartController extends Controller
         $shoppingCart = $request->user()->shoppingCart;
         $shoppingCart?->load([
             'items',
-            'items.product.category'
+            'items.product.category',
+            'items.product.media',
         ]);
 
         return ShoppingCartItemResource::collection($shoppingCart ? $shoppingCart->items : collect());
