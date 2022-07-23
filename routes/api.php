@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,9 @@ Route::middleware(['auth:api'])->group(static function () {
         Route::post('/create', [OrdersController::class, 'create']);
         Route::post('/update_status/{order}', [OrdersController::class, 'updateStatus']);
         Route::get('/all', [OrdersController::class, 'getAll']);
+    });
+    Route::prefix('profile')->group(static function () {
+        Route::get('/get', [UserProfileController::class, 'get']);
     });
 });
 
