@@ -11,6 +11,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileCannotBeAdded;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\InvalidBase64Data;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /**
@@ -66,13 +67,15 @@ class Product extends Model implements HasMedia
     /**
      * @param string $content
      * @return void
+     * @throws FileCannotBeAdded
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
+     * @throws InvalidBase64Data
      */
     public function addMainImageFromContent(string $content): void
     {
         $this->getMainImage()?->delete();
-        $this->addMediaFromString($content)->toMediaCollection(self::MAIN_IMAGE_MEDIA_COLLECTION);
+        $this->addMediaFromBase64(base64_encode($content))->toMediaCollection(self::MAIN_IMAGE_MEDIA_COLLECTION);
     }
 
     public function getMainImage(): ?Media
