@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\DestroyAccessTokensController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserProfileController;
 use Illuminate\Http\Request;
@@ -24,11 +26,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware(['auth:api'])->group(static function () {
+    Route::prefix('oauth')->group(static function () {
+        Route::post('/destroy_tokens', DestroyAccessTokensController::class);
+    });
     Route::prefix('products')->group(static function () {
         Route::post('/create', [ProductsController::class, 'create']);
         Route::post('/update/{product}', [ProductsController::class, 'update']);
         Route::post('/delete/{product}', [ProductsController::class, 'delete']);
         Route::get('/all', [ProductsController::class, 'getAll']);
+        Route::get('/get/{product}', [ProductsController::class, 'get']);
     });
     Route::prefix('categories')->group(static function () {
         Route::post('/create', [CategoriesController::class, 'create']);
@@ -51,4 +57,6 @@ Route::middleware(['auth:api'])->group(static function () {
         Route::get('/get', [UserProfileController::class, 'get']);
     });
 });
+
+Route::post('/register', RegisterController::class);
 

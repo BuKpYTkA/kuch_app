@@ -1,0 +1,2565 @@
+{
+	"info": {
+		"_postman_id": "3fc4b796-017c-4758-9cdb-2b3b7d64114c",
+		"name": "Kuch_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"access_token\", jsonData.access_token);",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/oauth/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "kZUe9udPGKQ9IzMCEgqnqrriMeLx0UXlrBxd9lU1",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "prokaza23@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123123",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "*",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/oauth/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:09:36 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:09:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 31536000,\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiOGQwOWI0NWExYmM5NjAxYmZkOWFkNmZhZDIyMGMyMzdkN2M5NmQ2MTJmNWYzYTNhMWIyNTMzNTNkODBkN2I3YTRlZWVmYjA3YzgzYTAxMWYiLCJpYXQiOjE2NTg0ODgxNzYuNDAyMzI2LCJuYmYiOjE2NTg0ODgxNzYuNDAyMzI4LCJleHAiOjE2OTAwMjQxNzYuMzkyNywic3ViIjoiMSIsInNjb3BlcyI6WyIqIl19.sCAFhoOOUsLmW9VBRigKPg-ygtO1aLfCd7wGcp0Fk5m5xzCnnt6bd2Ri7mxsxtEwZbIC2XDczeiU6fr_FADiwkdBUpThlTAjL5-HQ4oYqMe_Ux96cBHuXBdt8iRimN6SYTGm3eImOhnQ1chSHIDiMsqUtTwNSrnfXS9rQ-u4t8IOsjGuE1QmQT8PL153G8sv84Io51JK1GhSexZEIkqxX8yQSjC6P0VsoYJ0nEPuSiCD2gXGyieepvyYu1qyiul5PFe3GniFbJl3ubnhgL2iBjVQiynle-NjU6bN3bYSt7XR8uZcbYKl7iXyqA08w7Ad11tUKtjORGpy1fD6kOQIiZ3_RwhgPgAc3BwPOPpAhZf6W_xdhzpIwuc8luQk-WzobSGRqJF189ffEeCLlpSVQXWZ06IXZwrm8Rui98C3alEAYR44bgF4fnWuQR7KZl9rV0oERUq3ROgpkCDod6EtNkEa04H_yOpE61SRxBpGRu787YNxyl5HZQCVlxESNUOBsaJRczDtCg7qS9FgF_nISGOJPU4W0ASBwBo33pvcBOFwoje4TmSmpg4o-0bFRmvlfpHwoAkRnLPa4w5W06IjXIfuzovtlR1_eWwTY_9NSX7jjykChbeEwo8x5-BWfOVDCOykC-3VQK8Et463URhONOv3F_Hz5Xie8qTc6M3XvM4\",\n    \"refresh_token\": \"def5020072dc4549a0faaaff042cb30ef745e5eb379fccdc063ceaeca7ae2f1b2460652973e97125230a1cde1240767471498becbff3f336b647bfbc413509ef247c9e6534585102a3034e32c7dace4fba5430933f5829b9e245f08157e2af982998b676157469353c053442839919f2ea9fb717a9e98ca0c75444a333fcecc1566cdb971d24a4903bd3b5ba68b8fd9cfd331c72c6569984b05ce7ca542edee29d2ccf68710a9e5329125eef1420f7c371a26a5e4b31b44b2ab907fd1ea85051892ed7da275178c5b65b1875f8170e910286406a01740c393f866983ee37de26a4d57c66f8d3d630145431b6c257eb2376cfe42950ec99f2d262d9d69b63650864ef5e23868e4d78474b349c5725a4131ec005dd4c7113b59af3ddbec0d1a67ba6edea99b19b130b2a0bef0b40600a2cef72a460f28135a5f754897ab727b045e3ac1e035200d57f00b9982f7f0c2bb27eb9e0a5c29ee82c5eb9fae219f025034d67f374\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Refresh Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let jsonData = JSON.parse(responseBody);",
+									"pm.collectionVariables.set(\"access_token\", jsonData.access_token);",
+									"pm.collectionVariables.set(\"refresh_token\", jsonData.refresh_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/oauth/token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Refresh Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "grant_type",
+											"value": "refresh_token",
+											"type": "text"
+										},
+										{
+											"key": "refresh_token",
+											"value": "{{refresh_token}}",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{client_id}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{client_secret}}",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "*",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/oauth/token",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"oauth",
+										"token"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 10:51:30 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 10:51:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, private"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token_type\": \"Bearer\",\n    \"expires_in\": 31536000,\n    \"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiYzA3ZjRmOWM0MDRjMmM3Njc4MGRlNGYyYTA2ZjI4N2MzMTUwMWQyNjg4ZmMzMjk1MGJmYjEzYTQ5MWZhMmY1MDc5OTRjNWIwMmZjMjAzYzYiLCJpYXQiOjE2NTg1NzM0OTAuMDM1ODQsIm5iZiI6MTY1ODU3MzQ5MC4wMzU4NDEsImV4cCI6MTY5MDEwOTQ5MC4wMjE5MTcsInN1YiI6IjEiLCJzY29wZXMiOlsiKiJdfQ.Sh1RhwA4tQBTfMmBIekPy105PQk8kAk6ulw_CiLy8lsNnH2zuHjpEmohhsjbHL8t8jx0R4Zj7mpnXqy9fdlGT3I35RKZHe95naK0moIXByQ2lRFojdRx-iRzI0VBLKO-pTgxxr7uEmpoV45wt4J73emCPd6TdA5PDaYXy6baiO9r8whWdFuHojeS-Fr4a_jvamPESQ5xeNvF5LlyhGupQVHe21kmTnivH0YR5FFIPFyM5bVuzAbLzFqV1YczZuYy7OVIl7CHlTDuTsNx_RtTd914_jpFNex80uouGj_l7hGObxsVG9L2YtZufltV2aOV7gZCWOu3Uj4-E6UtXxh2ddImNIeMgGNSSsCVE2ZdzFrGBY5AcEM2gMJOUyCl5nYcA80xLPOpkvygn0Li4OkqyLbVxFcExg5JO9QgU0Nn_Wt0f3np_1Z4V3S0qkvRUFxF02VvWimqx0zwV8gAIkXTHUFlt_u0-CoeRlIA-9aKYtJU1MriZppGxG58DebOMrwo2ybauOHmy6qgA51GT0YrT43N4q_vnNUw13bnvYE0xt-7295kN_5HN1Fi6l8XLkbOIx-_H-pOwrD3LUlmDtgGXY6fga4ZmNctSVgT-88mGwHUGjlpueReLN8LcfkTet_5UG-zNEQTyl214czsj4BEtH5K3bVrj92PI-YfavcCsQ4\",\n    \"refresh_token\": \"def502006586d1160ae7644033043aa2ac9cb330b6fc6861df23fcbb4b7040262011332c905a132cd85c1ac147ec769ed7446fe4e7959f846b731aef7f0e903a2ec9064191b6461c185353966cf655ca51e37b4f0673327578b7407a4e03b81b4f0b6e82f56835e81851244b6fe294cdcbb308853fa1a0f578cecd94abafa0b12ace3037ca57b95faaa330d51b45cb2f013de63e35878cad6ffe9c9cc10feb3b19db4f19e03b8f8e98e6abffdfa0800db122670799e9a9341f5dff82e6688a1a7b9f344c6ae1dbb6db3e4c1f3a17a0aefdf937a62cb52a557ed91fd8f7bd337fe2c5e5fc2b3ea70468d6bdadc24cde99cea2fa96c7ae2fc24d331e0d142c1c983565dd442b424bd81713b8948523f2e1930b34a3a950e4d096818e99c7f80a9dc8b5ccf3dbf40116b9a190223748f8748169d5ed0599f7f72120a1f297c3d4fc6b23fffca1b191a1ba150c3ee82c810d534f5a47047aab63700b978bd36c6a76a965db65\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Destroy Tokens",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/oauth/destroy_tokens",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"oauth",
+								"destroy_tokens"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Destroy Tokens",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/oauth/destroy_tokens",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"oauth",
+										"destroy_tokens"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:13:15 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:13:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "kuch@gmail.com",
+									"description": "required |string | email_address | unique:users",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123abc###",
+									"description": "required | min:8 | should have letters | should have numbers | should have special characters | shoud be confirmed",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "123abc###",
+									"description": "confirmation of \"password\" field",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Kuhnokin Pasha",
+									"description": "required | string | min:1 | max: 255",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "kuch@gmail.com",
+											"description": "required |string | email_address | unique:users",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123abc###",
+											"description": "required | min:8 | should have letters | should have numbers | should have special characters | shoud be confirmed",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "123abc###",
+											"description": "confirmation of \"password\" field",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Kuhnokin Pasha",
+											"description": "required | string | min:1 | max: 255",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/register",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"register"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:30:50 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:30:50 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "product title",
+									"description": "string | max:255 | min:1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "product description",
+									"description": "nullable | string | max:1000",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "1000",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"description": "nullable | int | should represent an ID of existing Category",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "nullable | image | max_size:2mb",
+									"type": "file",
+									"src": "/Users/a.neposedov/Downloads/GruRuf7hD1ToAIc0.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "product title",
+											"description": "max:255 | min:1",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "product description",
+											"description": "nullable | max:1000",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "1000",
+											"description": "int",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"description": "nullable | should represent an ID of existing Category",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"description": "nullable",
+											"type": "file",
+											"src": "/Users/a.neposedov/Downloads/GruRuf7hD1ToAIc0.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:22:24 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:22:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"title\": \"product title\",\n        \"description\": \"product description\",\n        \"category_id\": \"1\",\n        \"price\": \"1000\",\n        \"updated_at\": \"2022-07-22T11:22:24.000000Z\",\n        \"created_at\": \"2022-07-22T11:22:24.000000Z\",\n        \"id\": 6,\n        \"category\": {\n            \"id\": 1,\n            \"title\": \"Computers\",\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        \"image_url\": \"http://127.0.0.1:8000/storage/2/GruRuf7hD1ToAIc0.jpeg\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "updated title",
+									"description": "string | max:255 | min:1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "updated description",
+									"description": "nullable | string | max:1000",
+									"type": "text"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"description": "nullable | int | should represent an ID of existing Category",
+									"type": "text"
+								},
+								{
+									"key": "delete_image",
+									"value": "1",
+									"description": "nullable | boolean (if passed as \"true\" and no image is provided, current image will be deleted)",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "100",
+									"description": "int",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"description": "nullable | image | max_size:2mb",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/products/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "updated title",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "updated description",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "delete_image",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "100",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/products/update/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"update",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:27:25 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 11:27:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"updated title\",\n        \"description\": \"updated description\",\n        \"category_id\": \"1\",\n        \"price\": \"100\",\n        \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n        \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n        \"category\": {\n            \"id\": 1,\n            \"title\": \"Computers\",\n            \"created_at\": null,\n            \"updated_at\": null\n        },\n        \"image_url\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/products/delete/6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"delete",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/products/delete/6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"delete",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 12:34:23 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 12:34:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/products/all?order_by=title&direction=asc&price_min=1&price_max=999999",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"all"
+							],
+							"query": [
+								{
+									"key": "order_by",
+									"value": "title",
+									"description": "nullable | string |  can_be: \"price\", \"title\", \"created_at\""
+								},
+								{
+									"key": "direction",
+									"value": "asc",
+									"description": "nullable | string | required_if:order_by | can_be: \"asc\", \"desc\""
+								},
+								{
+									"key": "price_min",
+									"value": "1",
+									"description": "nullable | int"
+								},
+								{
+									"key": "price_max",
+									"value": "999999",
+									"description": "nullable | int"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/products/all?order_by=title&direction=asc&price_min=1&price_max=999999",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"all"
+									],
+									"query": [
+										{
+											"key": "order_by",
+											"value": "title",
+											"description": "nullable | string |  can_be: \"price\", \"title\", \"created_at\""
+										},
+										{
+											"key": "direction",
+											"value": "asc",
+											"description": "nullable | string | required_if:order_by | can_be: \"asc\", \"desc\""
+										},
+										{
+											"key": "price_min",
+											"value": "1",
+											"description": "nullable | int"
+										},
+										{
+											"key": "price_max",
+											"value": "999999",
+											"description": "nullable | int"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 12:39:54 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 12:39:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"title\": \"aaawwwe\",\n            \"description\": \"cool NEW\",\n            \"category_id\": 1,\n            \"price\": 555,\n            \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n            \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"title\": \"Computers\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"image_url\": null\n        },\n        {\n            \"id\": 2,\n            \"title\": \"my product NEW\",\n            \"description\": \"cool NEW\",\n            \"category_id\": 1,\n            \"price\": 300,\n            \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n            \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"title\": \"Computers\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"image_url\": null\n        },\n        {\n            \"id\": 4,\n            \"title\": \"product title\",\n            \"description\": \"product description\",\n            \"category_id\": 1,\n            \"price\": 1000,\n            \"created_at\": \"2022-07-22T11:03:44.000000Z\",\n            \"updated_at\": \"2022-07-22T11:03:44.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"title\": \"Computers\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"image_url\": null\n        },\n        {\n            \"id\": 5,\n            \"title\": \"product title\",\n            \"description\": \"product description\",\n            \"category_id\": 1,\n            \"price\": 1000,\n            \"created_at\": \"2022-07-22T11:22:01.000000Z\",\n            \"updated_at\": \"2022-07-22T11:22:01.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"title\": \"Computers\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"image_url\": null\n        },\n        {\n            \"id\": 1,\n            \"title\": \"updated title\",\n            \"description\": \"updated description\",\n            \"category_id\": 1,\n            \"price\": 100,\n            \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n            \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n            \"category\": {\n                \"id\": 1,\n                \"title\": \"Computers\",\n                \"created_at\": null,\n                \"updated_at\": null\n            },\n            \"image_url\": null\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/products/all?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/products/all?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/products/all?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/products/all\",\n        \"per_page\": 15,\n        \"to\": 5,\n        \"total\": 5\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/products/get/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"get",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/products/get/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"products",
+										"get",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:16:43 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 06 Aug 2022 09:16:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"title\": \"Asus PC. Very nice\",\n        \"description\": \"Nice and powerful pc for anyone who wants to have a PC\",\n        \"category_id\": 1,\n        \"price\": 5345900,\n        \"created_at\": \"2022-07-23T12:20:52.000000Z\",\n        \"updated_at\": \"2022-07-23T12:20:52.000000Z\",\n        \"category\": {\n            \"id\": 1,\n            \"title\": \"Computers\",\n            \"created_at\": \"2022-07-23T12:20:52.000000Z\",\n            \"updated_at\": \"2022-07-23T12:20:52.000000Z\"\n        },\n        \"image_url\": \"http://127.0.0.1:8000/storage/2/text.txt\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Create",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "category title",
+									"description": "string |  max:255",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "category title",
+											"description": "string |  max:255",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/categories/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"categories",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:15:30 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:15:30 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"title\": \"category title\",\n        \"updated_at\": \"2022-07-22T14:15:30.000000Z\",\n        \"created_at\": \"2022-07-22T14:15:30.000000Z\",\n        \"id\": 3\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "title",
+									"value": "updated category title",
+									"description": "string |  max:255",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/categories/update/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "updated category title",
+											"description": "string |  max:255",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/categories/update/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"categories",
+										"update",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:16:22 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:16:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"title\": \"updated category title\",\n        \"created_at\": null,\n        \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/categories/delete/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/categories/delete/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"categories",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:16:57 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:16:57 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/categories/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/categories/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"categories",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:17:26 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:17:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"title\": \"category title\",\n            \"created_at\": \"2022-07-22T14:15:30.000000Z\",\n            \"updated_at\": \"2022-07-22T14:15:30.000000Z\"\n        },\n        {\n            \"id\": 1,\n            \"title\": \"updated category title\",\n            \"created_at\": null,\n            \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/categories/all?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/categories/all?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/categories/all?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/categories/all\",\n        \"per_page\": 15,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Shopping Cart",
+			"item": [
+				{
+					"name": "Add",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "1",
+									"description": "int | should represent an ID of existing Product",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "3",
+									"description": "int | min:1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shopping_cart/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"shopping_cart",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "3",
+											"description": "int | should represent an ID of existing Product",
+											"type": "text"
+										},
+										{
+											"key": "quantity",
+											"value": "1",
+											"description": "int | min:1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/shopping_cart/add",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"shopping_cart",
+										"add"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:20:21 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Jul 2022 14:20:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "58"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 14,\n            \"shopping_cart_id\": 8,\n            \"product_id\": 1,\n            \"quantity\": 5,\n            \"product\": {\n                \"id\": 1,\n                \"title\": \"updated title\",\n                \"description\": \"updated description\",\n                \"category_id\": 1,\n                \"price\": 100,\n                \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null\n            }\n        },\n        {\n            \"id\": 15,\n            \"shopping_cart_id\": 8,\n            \"product_id\": 3,\n            \"quantity\": 1,\n            \"product\": {\n                \"id\": 3,\n                \"title\": \"aaawwwe\",\n                \"description\": \"cool NEW\",\n                \"category_id\": 1,\n                \"price\": 555,\n                \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "product_id",
+									"value": "3",
+									"description": "int | should represent an ID of existing Product in Shopping Cart",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/shopping_cart/remove",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"shopping_cart",
+								"remove"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Remove",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "3",
+											"description": "int | should represent an ID of existing Product in Shopping Cart",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/shopping_cart/remove",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"shopping_cart",
+										"remove"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:15:24 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:15:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 18,\n            \"shopping_cart_id\": 9,\n            \"product_id\": 1,\n            \"quantity\": 1,\n            \"product\": {\n                \"id\": 1,\n                \"title\": \"updated title\",\n                \"description\": \"updated description\",\n                \"category_id\": 1,\n                \"price\": 100,\n                \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null\n            }\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Clear",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/shopping_cart/clear",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"shopping_cart",
+								"clear"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Clear",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/shopping_cart/clear",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"shopping_cart",
+										"clear"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:16:02 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:16:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/shopping_cart/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"shopping_cart",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/shopping_cart/get",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"shopping_cart",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:16:48 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:16:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 21,\n            \"shopping_cart_id\": 10,\n            \"product_id\": 3,\n            \"quantity\": 1,\n            \"product\": {\n                \"id\": 3,\n                \"title\": \"aaawwwe\",\n                \"description\": \"cool NEW\",\n                \"category_id\": 1,\n                \"price\": 555,\n                \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders/create",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"create"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/orders/create",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:18:25 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:18:25 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "55"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"user_id\": 1,\n        \"total\": 855,\n        \"status\": 1,\n        \"items\": [\n            {\n                \"id\": 3,\n                \"price\": 555,\n                \"title\": \"aaawwwe\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null,\n                \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"category_id\": 1,\n                \"description\": \"cool NEW\"\n            },\n            {\n                \"id\": 1,\n                \"price\": 100,\n                \"title\": \"updated title\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null,\n                \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n                \"category_id\": 1,\n                \"description\": \"updated description\"\n            }\n        ],\n        \"created_at\": \"2022-07-23T09:18:25.000000Z\",\n        \"updated_at\": \"2022-07-23T09:18:25.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update Status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "3",
+									"description": "int | in: 1(NEW), 2(PAID), 3(SHIPPED),  4(COMPLETED), 5(CANCELED)",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/api/orders/update_status/3",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"update_status",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Status",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "3",
+											"description": "int | in: 1(NEW), 2(PAID), 3(SHIPPED),  4(COMPLETED), 5(CANCELED)",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/api/orders/update_status/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"update_status",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:20:24 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:20:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"user_id\": 1,\n        \"total\": 855,\n        \"status\": 3,\n        \"items\": [\n            {\n                \"id\": 3,\n                \"price\": 555,\n                \"title\": \"aaawwwe\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null,\n                \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                \"category_id\": 1,\n                \"description\": \"cool NEW\"\n            },\n            {\n                \"id\": 1,\n                \"price\": 100,\n                \"title\": \"updated title\",\n                \"category\": {\n                    \"id\": 1,\n                    \"title\": \"updated category title\",\n                    \"created_at\": null,\n                    \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                },\n                \"image_url\": null,\n                \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n                \"category_id\": 1,\n                \"description\": \"updated description\"\n            }\n        ],\n        \"created_at\": \"2022-07-23T09:18:25.000000Z\",\n        \"updated_at\": \"2022-07-23T09:20:24.000000Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/orders/all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get All",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/orders/all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"orders",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:21:16 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:21:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "57"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"user_id\": 1,\n            \"total\": 18900,\n            \"status\": 2,\n            \"items\": [\n                {\n                    \"id\": 1,\n                    \"price\": 6000,\n                    \"title\": \"my product updated\",\n                    \"category\": {\n                        \"id\": 1,\n                        \"title\": \"Computers\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    },\n                    \"image_url\": null,\n                    \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                    \"updated_at\": \"2022-07-21T17:11:44.000000Z\",\n                    \"category_id\": 1,\n                    \"description\": \"cool updated\"\n                },\n                {\n                    \"id\": 2,\n                    \"price\": 300,\n                    \"title\": \"my product NEW\",\n                    \"category\": {\n                        \"id\": 1,\n                        \"title\": \"Computers\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    },\n                    \"image_url\": null,\n                    \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"category_id\": 1,\n                    \"description\": \"cool NEW\"\n                }\n            ],\n            \"created_at\": \"2022-07-22T09:56:46.000000Z\",\n            \"updated_at\": \"2022-07-22T10:15:07.000000Z\"\n        },\n        {\n            \"id\": 2,\n            \"user_id\": 1,\n            \"total\": 900,\n            \"status\": 1,\n            \"items\": [\n                {\n                    \"id\": 2,\n                    \"price\": 300,\n                    \"title\": \"my product NEW\",\n                    \"category\": {\n                        \"id\": 1,\n                        \"title\": \"Computers\",\n                        \"created_at\": null,\n                        \"updated_at\": null\n                    },\n                    \"image_url\": null,\n                    \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"category_id\": 1,\n                    \"description\": \"cool NEW\"\n                }\n            ],\n            \"created_at\": \"2022-07-22T09:59:57.000000Z\",\n            \"updated_at\": \"2022-07-22T09:59:57.000000Z\"\n        },\n        {\n            \"id\": 3,\n            \"user_id\": 1,\n            \"total\": 855,\n            \"status\": 3,\n            \"items\": [\n                {\n                    \"id\": 3,\n                    \"price\": 555,\n                    \"title\": \"aaawwwe\",\n                    \"category\": {\n                        \"id\": 1,\n                        \"title\": \"updated category title\",\n                        \"created_at\": null,\n                        \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                    },\n                    \"image_url\": null,\n                    \"created_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"updated_at\": \"2022-07-21T17:21:04.000000Z\",\n                    \"category_id\": 1,\n                    \"description\": \"cool NEW\"\n                },\n                {\n                    \"id\": 1,\n                    \"price\": 100,\n                    \"title\": \"updated title\",\n                    \"category\": {\n                        \"id\": 1,\n                        \"title\": \"updated category title\",\n                        \"created_at\": null,\n                        \"updated_at\": \"2022-07-22T14:16:22.000000Z\"\n                    },\n                    \"image_url\": null,\n                    \"created_at\": \"2022-07-21T17:02:48.000000Z\",\n                    \"updated_at\": \"2022-07-22T11:27:25.000000Z\",\n                    \"category_id\": 1,\n                    \"description\": \"updated description\"\n                }\n            ],\n            \"created_at\": \"2022-07-23T09:18:25.000000Z\",\n            \"updated_at\": \"2022-07-23T09:20:33.000000Z\"\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/orders/all?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/orders/all?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/orders/all?page=1\",\n                \"label\": \"1\",\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/orders/all\",\n        \"per_page\": 15,\n        \"to\": 3,\n        \"total\": 3\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User Profile",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/profile/get",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"profile",
+								"get"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/api/profile/get",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"profile",
+										"get"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:28:58 GMT"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 23 Jul 2022 09:28:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.1.8"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "60"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "59"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Anton Neposedov\",\n        \"email\": \"prokaza23@gmail.com\",\n        \"email_verified_at\": null,\n        \"created_at\": null,\n        \"updated_at\": null\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000"
+		},
+		{
+			"key": "client_secret",
+			"value": "kZUe9udPGKQ9IzMCEgqnqrriMeLx0UXlrBxd9lU1"
+		},
+		{
+			"key": "client_id",
+			"value": "2"
+		},
+		{
+			"key": "username",
+			"value": "kuch@gmail.com"
+		},
+		{
+			"key": "password",
+			"value": "123abc###"
+		},
+		{
+			"key": "access_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiNmIwZTY5ZTkwMDQ0ZjI2ZjNhZDIwOGJkNTE4NDBjNjYwM2ZkMWJmMjQ2NzFiMzg1MTMzYWJkMGMyYzgzZmY3ZDUyMGQ1OGEwNGI1OTEzM2MiLCJpYXQiOjE2NTg1NzQ5MjYuMzU1MjUyLCJuYmYiOjE2NTg1NzQ5MjYuMzU1MjUyLCJleHAiOjE2OTAxMTA5MjYuMzUxODksInN1YiI6IjEiLCJzY29wZXMiOlsiKiJdfQ.tDyZFSbrXA8U8ZcRaEvgnO7Y-fsNc5YSFVetMP_PpD0mnRve63bl4h4h_NFE92g6T2xqJ94dIsORx3Tre1aXBiDMMv9UZQc5plkFTscubXJdH2bUMggNLgUIZn9Nz_fRjTMsPHgylsQWrokAzmDKi7RSjNQYZc57dJ3AZdg0kArK-zPqTW9jIEtaJxtJl87tjUGvGYEqezpK9GH7cTymjASIWG8lloWqKpFAZ2pcjQ57X_k6V1cKF8Rqixit9ULCu4ZxeXHg7vWnhWkKifssE8vbgNxgPOwPqs2dpnd-urxCNj1DFX1-LKcsgKMCKv4b26aP5qjN6agbKvX77ybNsi43tDLoslfhaJgntewHIfiA0dfRIMVRE16VwL5CwGtlguwxmca2EMiZ3sCispEdUg0HH9aLQ3TgPuml8-43wQ8h4JIi0fQcvctq98gCx1YUPENg3KKIiW8gJLeysvZZaKL4_0PdCGiPCzGtjvtNiXK5Lz6XIVrMGkKdwZGQf6apYayyly0tBzdUUc65A42cDAHq5p32TzTy_BJ-nlIT-6uUnuNncFiAjrt4lYhlhTe_x-LttE8aLfL2v4ikLc_grPXTagGiLlXpPJf4rDP-sYmuaNHhU0jZKE1KfhRhFkxq5tYPwmUW9K5xtf_7KKzsKL2vb4eoGg6DcJL_wYIQeLQ"
+		},
+		{
+			"key": "refresh_token",
+			"value": "def50200892de1bbf9bb7d7d697bfd1760961621ebdf9c9b13729e418b68ac25d36a6893df8a3578e3877666d59403a9c5ca4cea138c9c928f291c9746441aa7ea651e838d7ed45c5db23c33e4b1ef255f73cdec42514e9a13d4c2adeba50a4d77f1ee286f80c5109e272285f28506c4dbc9d35c3a9c79f83eb82e4af593c009bb86ab4698a51e480a241984ab03bb057b5fdd6afb3a4a3c4a16bbfda7247be38599aa452bc3b0060c40c83cc85493c6b61e3518cfccf44f03f4f4e5055d8060be38254e9ad0d42a362bf4b042ba3e003a0194730d0c303aa65a1a3129d984f973c6c51824c545e74edf1bca96a381c943fce60e19b34a34d7235ed2588d0c8e6cfa561659772bdc6fc253fc59c53d7f39dd1a1cc7eade3713c94e27a2f7a74c89ebd4633e42656400d47050a9bdd8329f6a9b17c08b82aa0bfafff65959ff167551d8d77cd4dd8bee51115f9d9cd4b03d5e48f17d9877cab1d676e7bffb9f5697f34fc4"
+		}
+	]
+}

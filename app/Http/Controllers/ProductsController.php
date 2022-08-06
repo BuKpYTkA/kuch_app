@@ -55,6 +55,16 @@ class ProductsController extends Controller
         return response()->json();
     }
 
+    public function get(Product $product): ProductResource
+    {
+        $product->load([
+            'media',
+            'category'
+        ]);
+
+        return new ProductResource($product);
+    }
+
     public function getAll(GetProductsRequest $request): AnonymousResourceCollection
     {
         $query = Product::query();
