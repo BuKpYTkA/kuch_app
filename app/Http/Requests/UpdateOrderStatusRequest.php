@@ -34,4 +34,5 @@ class UpdateOrderStatusRequest extends FormRequest
     {
         return OrderStatus::from($this->input('status'));
     }
+
 }
