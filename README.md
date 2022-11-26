@@ -6,6 +6,7 @@ make set_up
 Otherwise:
 ```bash
 make up
+```
 
 ## User credentials for demo data:
 #### Username: test@example.com
